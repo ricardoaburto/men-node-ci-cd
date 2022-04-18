@@ -3,7 +3,7 @@ const product = require("../models/product");
 const { verifyToken } = require("../validation");
 
 // Create new product
-router.post("/", verifyToken, (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   //router.post("/", (req, res) => {
   const data = req.body;
   product
@@ -16,7 +16,7 @@ router.post("/", verifyToken, (req, res) => {
     });
 });
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   //advanced query by name
   const name = req.query.name;
 
@@ -34,7 +34,7 @@ router.get("/", (req, res) => {
 });
 
 // Retrieve Products based on stock
-router.get("/instock", verifyToken, (req, res) => {
+router.get("/instock", verifyToken, async (req, res) => {
   product
     .find({ inStock: true })
     .then((data) => {
@@ -45,7 +45,7 @@ router.get("/instock", verifyToken, (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   product
     .findById(req.params.id)
     .then((data) => {
@@ -57,7 +57,7 @@ router.get("/:id", (req, res) => {
 });
 
 // Update Product
-router.put("/:id", verifyToken, (req, res) => {
+router.put("/:id", verifyToken, async (req, res) => {
   //router.put("/:id", (req, res) => {
   const id = req.params.id;
 
@@ -80,7 +80,7 @@ router.put("/:id", verifyToken, (req, res) => {
 
 // Delete Product
 //router.delete("/:id", (req, res) => {
-router.delete("/:id", verifyToken, (req, res) => {
+router.delete("/:id", verifyToken, async (req, res) => {
   const id = req.params.id;
 
   product
