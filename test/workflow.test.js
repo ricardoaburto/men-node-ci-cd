@@ -1,6 +1,5 @@
 const chai = require("chai");
 const expect = chai.expect;
-const should = chai.should;
 const chaiHttp = require("chai-http");
 const server = require("../server");
 chai.use(chaiHttp);
@@ -19,7 +18,6 @@ describe("User workflow tests", () => {
       .send(user)
       .end((err, res) => {
         // Asserts
-
         expect(res.status).to.be.equal(200);
         expect(res.body).to.be.a("object");
         expect(res.body.error).to.be.equal(null);
@@ -80,7 +78,7 @@ describe("User workflow tests", () => {
               });
           });
       });
-  }).timeout(15000);
+  });
 
   it("should register + login a user, create product and delete it from DB", (done) => {
     // 1) Register new user
@@ -157,7 +155,7 @@ describe("User workflow tests", () => {
               });
           });
       });
-  }).timeout(15000);
+  });
 
   it("should register user with invalid input", (done) => {
     // 1) Register new user with invalid inputs
