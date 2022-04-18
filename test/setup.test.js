@@ -5,13 +5,13 @@ const User = require("../models/user");
 
 //clean up the database before and after each test
 
-beforeEach(async (done) => {
+beforeEach((done) => {
   Product.deleteMany({}, function (err) {});
   User.deleteMany({}, function (err) {});
   done();
 });
 
-afterEach(async (done) => {
+afterEach((done) => {
   User.deleteMany({}, function (err) {});
   Product.deleteMany({}, function (err) {});
   done();
