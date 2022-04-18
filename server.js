@@ -40,11 +40,8 @@ mongoose
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
+  .then(() => console.log("paso"))
   .catch((error) => console.log("Error connecting to MongoDB: " + error));
-
-mongoose.connection.once("open", () =>
-  console.log("Connected succesfully to MongoDB")
-);
 
 //routes definition
 //Welcome route
