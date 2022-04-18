@@ -73,12 +73,13 @@ describe("User workflow tests", () => {
                     expect(res.status).to.be.equal(200);
                     expect(res.body).to.be.a("array");
                     expect(res.body.length).to.be.eql(1);
-                    setTimeout(done, 3000);
+
+                    done();
                   });
               });
           });
       });
-  }).timeout(5000);
+  });
 
   it("should register + login a user, create product and delete it from DB", (done) => {
     // 1) Register new user
@@ -150,7 +151,7 @@ describe("User workflow tests", () => {
                     expect(actualVal).to.be.equal(
                       "Product was deleted successfully!"
                     );
-                    setTimeout(done, 3000);
+                    done();
                   });
               });
           });
