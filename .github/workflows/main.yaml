@@ -1,0 +1,29 @@
+name: NodeJS CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+
+    name: test
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use NodeJS ${{matrix.node-version}}
+        run:
+          npm install
+          npm test
+        env:
+          DBHOST: ${{ secrets.DBHOST }}
+          TOKEN_SECRET: ${{ secrets.TOKEN_SECRET }}
+          JWT_EXPIRES_INT: ${{ secrets.JWT_EXPIRES_INT }}
