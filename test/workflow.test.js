@@ -7,6 +7,7 @@ chai.use(chaiHttp);
 
 describe("User workflow tests", () => {
   it("should register + login a user, create product and verify 1 in DB", (done) => {
+    this.timeout(10000);
     // 1) Register new user
     let user = {
       name: "Peter Petersen",
@@ -83,6 +84,7 @@ describe("User workflow tests", () => {
   });
 
   it("should register + login a user, create product and delete it from DB", (done) => {
+    this.timeout(10000);
     // 1) Register new user
     let user = {
       name: "Peter Petersen",
