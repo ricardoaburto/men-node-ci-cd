@@ -3,10 +3,25 @@ const chai = require("chai");
 const expect = chai.expect;
 const chaiHttp = require("chai-http");
 const server = require("../server");
+
+const Product = require("../models/product");
+const User = require("../models/user");
 chai.use(chaiHttp);
 
 describe("User workflow tests", () => {
+  beforeEach((done) => {
+  Product.deleteMany({}, function (err) {});
+  User.deleteMany({}, function (err) {});
+  done();
+});
+
+afterEach((done) => {
+  User.deleteMany({}, function (err) {});
+  Product.deleteMany({}, function (err) {});
+  done();
   it("should register + login a user, create product and verify 1 in DB", (done) => {
+
+
     // 1) Register new user
     let user = {
       name: "Peter Petersen",
