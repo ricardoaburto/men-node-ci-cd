@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
 //connect to the MongoDB using Mongoose ODM
 mongoose
   .connect(process.env.DBHOST, {
-    useUnifiedTopology: true,
+    useUnifiedTopology: false,
     useNewUrlParser: true,
   })
   .catch((error) => console.log("Error connecting to MongoDB: " + error));
