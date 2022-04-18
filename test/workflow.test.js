@@ -4,7 +4,7 @@ const chaiHttp = require("chai-http");
 const server = require("../server");
 chai.use(chaiHttp);
 
-describe("User workflow tests", () => {
+describe("User workflow tests", async () => {
   it("should register + login a user, create product and verify 1 in DB", (done) => {
     // 1) Register new user
     let user = {
@@ -80,7 +80,7 @@ describe("User workflow tests", () => {
       });
   });
 
-  it("should register + login a user, create product and delete it from DB", (done) => {
+  it("should register + login a user, create product and delete it from DB", async (done) => {
     // 1) Register new user
     let user = {
       name: "Peter Petersen",
