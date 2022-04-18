@@ -63,7 +63,7 @@ describe("User workflow tests", () => {
                 );
                 expect(savedProduct.price).to.be.equal(product.price);
                 expect(savedProduct.inStock).to.be.equal(product.inStock);
-
+                done();
                 // 4) Verify one product in test DB
                 chai
                   .request(server)
